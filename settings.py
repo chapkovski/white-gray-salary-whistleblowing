@@ -12,14 +12,24 @@ SESSION_CONFIG_DEFAULTS = {
 }
 
 SESSION_CONFIGS = [
-    #{
-    #    'name': 'public_goods',
-    #    'display_name': "Public Goods",
-    #    'num_demo_participants': 3,
-    #    'app_sequence': ['public_goods', 'payment_info'],
-    #},
-]
+    {
+        'name': 'creed_05',
+        'display_name': "Creed game, 50% of catch",
+        'num_demo_participants': 2,
+        'app_sequence': ['creed'],
+        'fine': 100,
+        'prob_catch': 0.5,
+    },
+    {
+        'name': 'creed_075',
+        'display_name': "Creed game, 75% of catch",
+        'num_demo_participants': 2,
+        'app_sequence': ['creed'],
+        'fine': 100,
+        'prob_catch': 0.75,
+    },
 
+]
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans

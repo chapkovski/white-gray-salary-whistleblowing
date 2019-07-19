@@ -2,11 +2,43 @@
 {% load otree static %}
 
 {% block title %}
-    Page title
+    Результаты предыдущего периода. Период {{ player.round_number }} из {{ Constants.num_rounds }}
 {% endblock %}
 
 {% block content %}
+    <h5>В предыдущем ({{ player.in_previous_round.round_number }}) периоде:</h5>
+    <table class="table table-striped table-hover">
+        {% if player.round_number == 1 %}
+            <tr>
+                <td>Начальная сумма:</td>
+                <td>{{ player.endowment }}</td>
+            </tr>
+        {% endif %}
 
+        <tr>
+            <td>Ваш доход:</td>
+            <td>{{ player.in_previous_round.base_payoff }}</td>
+        </tr>
+        {% if player.round_number > 2 %}
+            <tr>
+                <td>Изменение в базовом доходе по сравнению с позапрошлым периодом:</td>
+                <td>{{ player.in_previous_round.delta }}</td>
+            </tr>
+        {% endif %}
+        <tr>
+            <td>В прошлом периоде вы выбрали cхему:</td>
+            <td>{{ player.in_previous_round.get_white_display }}</td>
+        </tr>
+        <tr>
+            <td>Штраф:</td>
+            <td>{{ player.in_previous_round.actual_fine }}</td>
+        </tr>
+        <tr>
+            <td>Ваш накопленный доход:</td>
+            <td>{{ player.in_previous_round.accumulated_payoff }}</td>
+        </tr>
+
+    </table>
     {% next_button %}
 {% endblock %}
 

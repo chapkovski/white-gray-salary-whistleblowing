@@ -20,7 +20,7 @@ class CQ(Page):
 
 class Salary(Page):
     form_model = 'player'
-    form_fields = ['salary']
+    form_fields = ['white']
 
 
 class WB(Page):
@@ -34,7 +34,8 @@ class ResultsWP(WaitPage):
 
 
 class Results(Page):
-    pass
+    def is_displayed(self) -> bool:
+        return self.round_number != 1
 
 
 class FinalResults(Page):
@@ -43,12 +44,12 @@ class FinalResults(Page):
 
 
 page_sequence = [
-    Intro,
-    Instructions,
-    CQ,
+    # Intro,
+    # Instructions,
+    # CQ,
     Salary,
     WB,
     ResultsWP,
     Results,
-    FinalResults,
+    # FinalResults,
 ]
