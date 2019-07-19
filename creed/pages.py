@@ -3,22 +3,49 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class MyPage(Page):
+class Intro(Page):
+    def is_displayed(self) -> bool:
+        return self.round_number == 1
+
+
+class Instructions(Page):
+    def is_displayed(self) -> bool:
+        return self.round_number == 1
+
+
+class CQ(Page):
+    def is_displayed(self) -> bool:
+        return self.round_number == 1
+
+
+class Salary(Page):
     pass
 
 
-class ResultsWaitPage(WaitPage):
+class WB(Page):
+    pass
 
-    def after_all_players_arrive(self):
-        pass
+
+class ResultsWP(Page):
+    pass
 
 
 class Results(Page):
     pass
 
 
+class FinalResults(Page):
+    def is_displayed(self) -> bool:
+        return self.round_number == Constants.num_rounds
+
+
 page_sequence = [
-    MyPage,
-    ResultsWaitPage,
-    Results
+    Intro,
+    Instructions,
+    CQ,
+    Salary,
+    WB,
+    ResultsWP,
+    Results,
+    FinalResults,
 ]
