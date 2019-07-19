@@ -19,15 +19,18 @@ class CQ(Page):
 
 
 class Salary(Page):
-    pass
+    form_model = 'player'
+    form_fields = ['salary']
 
 
 class WB(Page):
-    pass
+    form_model = 'player'
+    form_fields = ['wb']
 
 
-class ResultsWP(Page):
-    pass
+class ResultsWP(WaitPage):
+    def after_all_players_arrive(self):
+        self.group.set_payoffs()
 
 
 class Results(Page):
