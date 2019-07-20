@@ -24,7 +24,10 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     prob_catch = models.FloatField(doc='Вероятность поимки')
-    fine = models.IntegerField(doc="Размер штрафа")
+    fine = models.CurrencyField(doc="Размер штрафа")
+
+    def get_prob_proc(self):
+        return "{0:.0%}".format(self.prob_catch)
 
     def creating_session(self):
         self.prob_catch = self.session.config['prob_catch']
@@ -56,6 +59,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    user_id = models.IntegerField(label='Введите номер указанный на табличке у вас на столе')
     endowment = models.CurrencyField()
     white = models.BooleanField(choices=((True, 'Белая'), (False, 'Серая')),
                                 label='Выберите тип зарплаты',
@@ -85,7 +89,6 @@ class Player(BasePlayer):
     def cq4_error_message(self, value):
         if value != True:
             return 'Проверьте правильность ответа'
-
 
     def get_partner(self):
         return self.group.get_player_by_id(self.partner)
