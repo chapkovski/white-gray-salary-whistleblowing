@@ -13,7 +13,7 @@ Your app description
 
 class Constants(BaseConstants):
     name_in_url = 'creed'
-    players_per_group = 2
+    players_per_group = 6
     assert players_per_group % 2 == 0, "Количество участников должно быть четным"
     num_rounds = 10
     payoff_matrix = {'Белая': 50, 'Серая': 150}
@@ -30,6 +30,9 @@ class Subsession(BaseSubsession):
         self.prob_catch = self.session.config['prob_catch']
         self.fine = self.session.config['fine']
         for g in self.get_groups():
+            players = g.get_players()
+            random.shuffle(players)
+            g.set_players(players)
             for p in g.get_players():
                 if self.round_number == 1:
                     p.endowment = Constants.endowment
@@ -56,6 +59,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    user_id = models.IntegerField(label='Введите номер указанный на табличке у вас на столе')
     endowment = models.CurrencyField()
     white = models.BooleanField(choices=((True, 'Белая'), (False, 'Серая')),
                                 label='Выберите тип зарплаты',
