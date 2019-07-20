@@ -53,9 +53,9 @@ class FinalResults(Page):
 
 
 page_sequence = [
-    # Intro,
-    # Instructions,
-    # CQ,
+    Intro,
+    Instructions,
+    CQ,
     Salary,
     WB,
     ResultsWP,
