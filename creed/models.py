@@ -66,6 +66,25 @@ class Player(BasePlayer):
     checked = models.BooleanField(initial=False)
     partner = models.IntegerField()
     base_payoff = models.CurrencyField(doc='Здесь мы храним базовый доход до штрафа')
+    cq1, cq2, cq3, cq4 = [models.BooleanField(label='',
+                                              widget=widgets.RadioSelectHorizontal,
+                                              choices=((False, "Нет"), (True, "Да")), ) for _ in range(4)]
+
+    def cq1_error_message(self, value):
+        if value != True:
+            return 'Проверьте правильность ответа'
+
+    def cq2_error_message(self, value):
+        if value != False:
+            return 'Проверьте правильность ответа'
+
+    def cq3_error_message(self, value):
+        if value != False:
+            return 'Проверьте правильность ответа'
+
+    def cq4_error_message(self, value):
+        if value != True:
+            return 'Проверьте правильность ответа'
 
     def set_check_of_partner(self):
         partner = self.group.get_player_by_id(self.parnter)

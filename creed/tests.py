@@ -8,6 +8,10 @@ import random
 class PlayerBot(Bot):
 
     def play_round(self):
+        if self.round_number == 1:
+            yield Intro,
+            yield Instructions,
+            yield CQ, {'cq1': True, 'cq2': False, 'cq3': False, 'cq4': True, }
         yield Salary, {'white': random.choice([False, True])}
         yield WB, {'wb': random.choice([False, True])}
         if self.round_number > 1:

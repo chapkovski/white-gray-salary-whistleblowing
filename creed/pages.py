@@ -14,6 +14,9 @@ class Instructions(Page):
 
 
 class CQ(Page):
+    form_model = 'player'
+    form_fields = ['cq1', 'cq2', 'cq3', 'cq4']
+
     def is_displayed(self) -> bool:
         return self.round_number == 1
 
@@ -44,12 +47,13 @@ class FinalResults(Page):
 
 
 page_sequence = [
-    # Intro,
-    # Instructions,
-    # CQ,
+    Intro,
+    Instructions,
+    CQ,
     Salary,
     WB,
     ResultsWP,
     Results,
     # FinalResults,
+
 ]
