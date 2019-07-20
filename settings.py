@@ -15,18 +15,20 @@ SESSION_CONFIGS = [
     {
         'name': 'creed_05',
         'display_name': "Creed game, 50% of catch",
-        'num_demo_participants': 2,
+        'num_demo_participants': 6,
         'app_sequence': ['creed'],
         'fine': 100,
         'prob_catch': 0.5,
+        'use_browser_bots': False,
     },
     {
         'name': 'creed_075',
         'display_name': "Creed game, 75% of catch",
-        'num_demo_participants': 2,
+        'num_demo_participants': 6,
         'app_sequence': ['creed'],
         'fine': 100,
         'prob_catch': 0.75,
+        'use_browser_bots': False,
     },
 
 ]

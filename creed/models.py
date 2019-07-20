@@ -13,7 +13,7 @@ Your app description
 
 class Constants(BaseConstants):
     name_in_url = 'creed'
-    players_per_group = 2
+    players_per_group = 6
     assert players_per_group % 2 == 0, "Количество участников должно быть четным"
     num_rounds = 10
     payoff_matrix = {'Белая': 50, 'Серая': 150}
