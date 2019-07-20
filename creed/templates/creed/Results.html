@@ -37,7 +37,16 @@
             <td>Ваш накопленный доход:</td>
             <td>{{ player.in_previous_round.accumulated_payoff }}</td>
         </tr>
-
+        {% if player.wb %}
+            <tr>
+                <td>В прошлом периоде ваше решение об информировании о решении другой фирмы:</td>
+                <td>{{ player.in_previous_round.get_wb_display }}</td>
+            </tr>
+            <tr>
+                <td>Вторая фирма в прошлом раунде приняла решение о схеме зарплаты:</td>
+                <td>{{ player.get_partner.get_white_display }}</td>
+            </tr>
+        {% endif %}
     </table>
     {% next_button %}
 {% endblock %}

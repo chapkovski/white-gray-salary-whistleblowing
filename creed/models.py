@@ -86,10 +86,13 @@ class Player(BasePlayer):
         if value != True:
             return 'Проверьте правильность ответа'
 
+
+    def get_partner(self):
+        return self.group.get_player_by_id(self.partner)
+
     def set_check_of_partner(self):
-        partner = self.group.get_player_by_id(self.parnter)
         if self.wb:
-            partner.checked = True
+            self.get_partner().checked = True
 
     def set_payoff(self):
         if self.white:
