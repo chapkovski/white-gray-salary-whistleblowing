@@ -2,10 +2,62 @@
 {% load otree static %}
 
 {% block title %}
-    Page title
+    Ответьте, пожалуйста, на вопросы
 {% endblock %}
 
 {% block content %}
+
+
+    <div class="card">
+        <div class="card-body">
+            <h6 class="card-title">
+                Вопрос 1. Если Вы выбрали “белую” схему оплаты труда, то чем большее количество участников выбрали
+                “серую” схему оплаты труда, тем меньше вы заработаете..
+            </h6>
+            {% formfield player.cq1 %}
+
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h6 class="card-title">
+                Вопрос 2. Если Вы решили выбрать “серую” схему оплаты, вероятность того, что вас оштрафуют, всегда 100
+                %.
+            </h6>
+            {% formfield player.cq2 %}
+
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h6 class="card-title">
+                Вопрос 3. Если Вы решаете “информировать” налоговые органы о факте выбора “серой” схемы другим игроком,
+                вероятность того, что этого игрока не оштрафуют, будет 100 %.
+            </h6>
+            {% formfield player.cq3 %}
+
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h6 class="card-title">
+                Вопрос 4. Если Вы выбрали “серую” схему оплаты, то чем большее количество участников выбрали “белую”
+                схему оплаты труда, тем большее Вы заработаете.
+            </h6>
+            {% formfield player.cq4 %}
+
+        </div>
+    </div>
+
+
+
+    {% include 'creed/includes/instructions_wrapper.html' %}
+
+
+
 
     {% next_button %}
 

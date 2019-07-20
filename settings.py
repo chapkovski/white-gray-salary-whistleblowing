@@ -15,31 +15,34 @@ SESSION_CONFIGS = [
     {
         'name': 'creed_05',
         'display_name': "Creed game, 50% of catch",
-        'num_demo_participants': 2,
+        'num_demo_participants': 6,
         'app_sequence': ['creed'],
         'fine': 100,
         'prob_catch': 0.5,
+        'use_browser_bots': False,
     },
     {
         'name': 'creed_075',
         'display_name': "Creed game, 75% of catch",
-        'num_demo_participants': 2,
+        'num_demo_participants': 6,
         'app_sequence': ['creed'],
         'fine': 100,
         'prob_catch': 0.75,
+        'use_browser_bots': False,
     },
 
 ]
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'ru'
 
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
+POINTS_CUSTOM_NAME = 'ECU'
 
-ROOMS = []
+ROOMS = [{'name': 'hse', 'display_name': 'hse'}]
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable

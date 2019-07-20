@@ -4,7 +4,7 @@ from otree.api import (
 )
 import random
 
-author = 'Your name here'
+author = 'Philipp Chapkovski, HSE-Moscow, chapkovski@gmail.com'
 
 doc = """
 Your app description
@@ -24,7 +24,10 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     prob_catch = models.FloatField(doc='Вероятность поимки')
-    fine = models.IntegerField(doc="Размер штрафа")
+    fine = models.CurrencyField(doc="Размер штрафа")
+
+    def get_prob_proc(self):
+        return "{0:.0%}".format(self.prob_catch)
 
     def creating_session(self):
         self.prob_catch = self.session.config['prob_catch']
@@ -70,11 +73,32 @@ class Player(BasePlayer):
     checked = models.BooleanField(initial=False)
     partner = models.IntegerField()
     base_payoff = models.CurrencyField(doc='Здесь мы храним базовый доход до штрафа')
+    cq1, cq2, cq3, cq4 = [models.BooleanField(label='',
+                                              widget=widgets.RadioSelectHorizontal,
+                                              choices=((False, "Нет"), (True, "Да")), ) for _ in range(4)]
+
+    def cq1_error_message(self, value):
+        if value != True:
+            return 'Проверьте правильность ответа'
+
+    def cq2_error_message(self, value):
+        if value != False:
+            return 'Проверьте правильность ответа'
+
+    def cq3_error_message(self, value):
+        if value != False:
+            return 'Проверьте правильность ответа'
+
+    def cq4_error_message(self, value):
+        if value != True:
+            return 'Проверьте правильность ответа'
+
+    def get_partner(self):
+        return self.group.get_player_by_id(self.partner)
 
     def set_check_of_partner(self):
-        partner = self.group.get_player_by_id(self.parnter)
         if self.wb:
-            partner.checked = True
+            self.get_partner().checked = True
 
     def set_payoff(self):
         if self.white:
